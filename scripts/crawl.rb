@@ -1,4 +1,3 @@
-require_relative '../config/environment'
 require 'nokogiri'
 require 'rss'
 require 'net/https'
@@ -39,7 +38,7 @@ end
 %w! daily weekly monthly !.each do |since|
   (%w! unknown c javascript objective-c python ruby bash vim ! << '').each do |lang|
     puts since, lang
-    path = Rails.root.join('public', 'rss', "github_trends_#{lang}_#{since}.rss")
+    path = File.expand_path("../../public/rss/github_trends_#{lang}_#{since}.rss", __FILE__)
     open(path, 'w') do |f|
       f.write rss(lang, since).to_s
     end
