@@ -170,7 +170,7 @@ def rss(lang_name, lang_key, since)
       item = maker.items.new_item
       item.link = "https://github.com#{repo[:url]}"
       item.title = "#{repo[:owner]}/#{repo[:name]} (##{index + 1} - #{lang_name} - #{caped_since})"
-      item.description = repo[:description]
+      item.description = "#{repo[:description]}\n(#{repo[:language]})"
       item.date = Time.now
     end
   end
