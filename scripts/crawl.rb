@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'bundler/setup'
+
 require 'nokogiri'
 require 'rss'
 require 'net/https'
