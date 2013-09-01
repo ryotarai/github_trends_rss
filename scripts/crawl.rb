@@ -7,8 +7,17 @@ require 'net/https'
 require 'open-uri'
 require 'pp'
 
+def github_trends_url(lang, since)
+  lang = '' if lang == 'all'
+  "https://github.com/trending?l=#{lang}&since=#{since}"
+end
+
+def rss_filename(lang, since)
+  "github_trends_#{lang}_#{since}.rss"
+end
+
 def fetch_repos(lang, since)
-  doc = Nokogiri::HTML(open("https://github.com/trending?l=#{lang}&since=#{since}"))
+  doc = Nokogiri::HTML(open(github_trends_url(lang, since)))
   doc.css('.repo-leaderboard-list-item').map do |item|
     {
       owner: item.css('a.repository-name .owner-name').text,
@@ -23,15 +32,18 @@ end
 def rss(lang, since)
   repos = fetch_repos(lang, since)
   RSS::Maker.make("1.0") do |maker|
-    maker.channel.about = "http://example.com/index.rdf"
-    maker.channel.title = "GitHub Trends - #{lang} - #{since}"
-    maker.channel.description = "GitHub Trends - #{lang} - #{since}"
-    maker.channel.link = "http://github.com/"
+    caped_lang = lang.capitalize
+    caped_since = since.capitalize
+
+    maker.channel.about = "http://github-trends.ryotarai.info/rss/#{rss_filename(lang, since)}"
+    maker.channel.title = "GitHub Trends - #{caped_lang} - #{caped_since}"
+    maker.channel.description = "GitHub Trends - #{caped_lang} - #{caped_since}"
+    maker.channel.link = github_trends_url(lang, since)
 
     repos.each_with_index do |repo, index|
       item = maker.items.new_item
       item.link = "https://github.com#{repo[:url]}"
-      item.title = "##{index + 1} #{repo[:owner]}/#{repo[:name]} (#{lang}, #{since})"
+      item.title = "#{repo[:owner]}/#{repo[:name]} (##{index + 1} - #{caped_lang} - #{caped_since})"
       item.description = repo[:description]
       item.date = Time.now
     end
@@ -39,9 +51,9 @@ def rss(lang, since)
 end
 
 %w! daily weekly monthly !.each do |since|
-  (%w! unknown c javascript objective-c python ruby bash vim ! << '').each do |lang|
-    puts since, lang
-    path = File.expand_path("../../public/rss/github_trends_#{lang}_#{since}.rss", __FILE__)
+  %w! unknown c javascript objective-c python ruby bash vim all !.each do |lang|
+    puts "crawling #{since} #{lang}..."
+    path = File.expand_path("../../public/rss/#{rss_filename(lang, since)}", __FILE__)
     open(path, 'w') do |f|
       f.write rss(lang, since).to_s
     end
