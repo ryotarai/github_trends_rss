@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>GitHub Trends RSS</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>GitHub Trends RSS</h1>
+        <p>RSS feeds of GitHub Trends. Try to subscribe!</p>
+        <p><a href="https://github.com/trending" class="btn btn-primary btn-lg">Go to GitHub Trends</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="content">
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Ryota Arai 2013</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <script id="lang-template" type="text/x-handlebars-template">
+        <div class="col-lg-3">
+          <h2>{{langName}}</h2>
+          <p><a class="btn btn-default" href="/rss/github_trends_{{escapedLangKey}}_daily.rss"><i class="icon-rss"></i> Daily &raquo;</a>&nbsp;&nbsp;<a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp://github-trends.ryotarai.info/rss/github_trends_{{escapedLangKey}}_daily.rss">(Feedly)</a></p>
+          <p><a class="btn btn-default" href="/rss/github_trends_{{escapedLangKey}}_weekly.rss"><i class="icon-rss"></i> Weekly &raquo;</a>&nbsp;&nbsp;<a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp://github-trends.ryotarai.info/rss/github_trends_{{escapedLangKey}}_weekly.rss">(Feedly)</a></p>
+          <p><a class="btn btn-default" href="/rss/github_trends_{{escapedLangKey}}_monthly.rss"><i class="icon-rss"></i> Monthly &raquo;</a>&nbsp;&nbsp;<a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp://github-trends.ryotarai.info/rss/github_trends_{{escapedLangKey}}_monthly.rss">(Feedly)</a></p>
+        </div>
+    </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="js/handlebars.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
+
