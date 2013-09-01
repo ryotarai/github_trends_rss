@@ -157,6 +157,7 @@ end
 
 def rss(lang_name, lang_key, since)
   repos = fetch_repos(lang_key, since)
+  return '' if repos.empty?
   RSS::Maker.make("1.0") do |maker|
     caped_since = since.capitalize
 
