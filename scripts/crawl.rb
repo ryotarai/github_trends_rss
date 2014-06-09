@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require './languages'
+require_relative './languages'
 require 'nokogiri'
 require 'rss'
 require 'net/https'
