@@ -21,7 +21,21 @@ def rss_filename(lang_key, since)
 end
 
 def fetch_repos(lang_key, since)
-  doc = Nokogiri::HTML(open(github_trends_url(lang_key, since)))
+  url = github_trends_url(lang_key, since)
+  retry_count = 0
+  begin
+    doc = Nokogiri::HTML(open(url))
+  rescue OpenURI::HTTPError
+    if retry_count < 3
+      retry_count += 1
+      sleep 30
+      STDERR.puts "Retrying..."
+      retry
+    else
+      STDERR.puts url
+      raise
+    end
+  end
   doc.css('.repo-leaderboard-list-item').map do |item|
     {
       owner: item.css('a.repository-name .owner-name').text,
