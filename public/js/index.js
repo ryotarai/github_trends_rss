@@ -1,5 +1,5 @@
 $(function() {
-  var langsOrder = ['all', 'unknown', 'c', 'javascript', 'objective-c', 'python', 'ruby', 'bash', 'vim', 'abap', 'as3', 'ada', 'apex', 'applescript', 'arc', 'arduino', 'aspx-vb', 'nasm', 'augeas', 'autohotkey', 'awk', 'boo', 'bro', 'csharp', 'cpp', 'ceylon', 'clips', 'clojure', 'coffeescript', 'cfm', 'common-lisp', 'coq', 'css', 'd', 'dart', 'dcpu-16-asm', 'delphi', 'dot', 'dylan', 'ec', 'ecl', 'eiffel', 'elixir', 'emacs-lisp', 'erlang', 'fsharp', 'factor', 'fancy', 'fantom', 'forth', 'fortran', 'go', 'gosu', 'groovy', 'haskell', 'haxe', 'io', 'ioke', 'java', 'julia', 'kotlin', 'lasso', 'livescript', 'logos', 'logtalk', 'lua', 'm', 'matlab', 'max%2Fmsp', 'ruby', 'monkey', 'moonscript', 'nemerle', 'nimrod', 'nu', 'objective-j', 'ocaml', 'omgrofl', 'ooc', 'opa', 'openedge-abl', 'parrot', 'perl', 'php', 'pike', 'pogoscript', 'powershell', 'processing', 'prolog', 'puppet', 'pure-data', 'r', 'racket', 'ragel-in-ruby-host', 'rebol', 'rouge', 'rust', 'scala', 'scheme', 'scilab', 'self', 'slash', 'smalltalk', 'standard-ml', 'supercollider', 'tcl', 'turing', 'txl', 'typescript', 'vala', 'verilog', 'vhdl', 'visual-basic', 'wisp', 'xc', 'xml', 'xproc', 'xquery', 'xslt', 'xtend'];
+  var langsOrder = ['all', 'unknown', 'c', 'javascript', 'objective-c', 'python', 'ruby', 'bash', 'vim', 'abap', 'as3', 'ada', 'apex', 'applescript', 'arc', 'arduino', 'aspx-vb', 'nasm', 'augeas', 'autohotkey', 'awk', 'boo', 'bro', 'csharp', 'cpp', 'ceylon', 'clips', 'clojure', 'coffeescript', 'cfm', 'common-lisp', 'coq', 'css', 'd', 'dart', 'dcpu-16-asm', 'delphi', 'dot', 'dylan', 'ec', 'ecl', 'eiffel', 'elixir', 'emacs-lisp', 'erlang', 'fsharp', 'factor', 'fancy', 'fantom', 'forth', 'fortran', 'go', 'gosu', 'groovy', 'haskell', 'haxe', 'io', 'ioke', 'java', 'julia', 'kotlin', 'lasso', 'livescript', 'logos', 'logtalk', 'lua', 'm', 'matlab', 'max%2Fmsp', 'ruby', 'monkey', 'moonscript', 'nemerle', 'nimrod', 'nu', 'objective-j', 'ocaml', 'omgrofl', 'ooc', 'opa', 'openedge-abl', 'parrot', 'perl', 'php', 'pike', 'pogoscript', 'powershell', 'processing', 'prolog', 'puppet', 'pure-data', 'r', 'racket', 'ragel-in-ruby-host', 'rebol', 'rouge', 'rust', 'scala', 'scheme', 'scilab', 'self', 'slash', 'smalltalk', 'standard-ml', 'supercollider', 'swift', 'tcl', 'turing', 'txl', 'typescript', 'vala', 'verilog', 'vhdl', 'visual-basic', 'wisp', 'xc', 'xml', 'xproc', 'xquery', 'xslt', 'xtend'];
 
   var langs = {
     'all': 'All Languages',
@@ -106,6 +106,7 @@ $(function() {
     'smalltalk': 'Smalltalk',
     'standard-ml': 'Standard ML',
     'supercollider': 'SuperCollider',
+    'swift': 'Swift',
     'tcl': 'Tcl',
     'turing': 'Turing',
     'txl': 'TXL',

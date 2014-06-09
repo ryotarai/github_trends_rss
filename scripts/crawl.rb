@@ -113,6 +113,7 @@ LANGS = {
   'Smalltalk' => 'smalltalk',
   'Standard ML' => 'standard-ml',
   'SuperCollider' => 'supercollider',
+  'Swift' => 'swift',
   'Tcl' => 'tcl',
   'Turing' => 'turing',
   'TXL' => 'txl',
