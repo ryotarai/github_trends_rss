@@ -36,6 +36,8 @@ open(File.expand_path('../../public/js/languages.js', __FILE__), 'w') do |f|
   language_order.unshift('ruby')
   language_order.unshift('python')
   language_order.unshift('objective-c')
+  language_order.unshift('javascript')
+  language_order.unshift('go')
   language_order.unshift('c')
   language_order.unshift('unknown')
   language_order.unshift('all')
