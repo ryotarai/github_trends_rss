@@ -36,13 +36,17 @@ def fetch_repos(lang_key, since)
       raise
     end
   end
-  doc.css('.repo-leaderboard-list-item').map do |item|
+  doc.css('.repo-list-item').map do |item|
+    path = item.css('.repo-list-name a').attr('href').value
+    _, owner, name = path.split('/')
+    language = item.css('p.repo-list-meta').text.split("\n")[1].strip
+
     {
-      owner: item.css('a.repository-name .owner-name').text,
-      name: item.css('a.repository-name strong').text,
-      language: item.css('span.title-meta').text,
-      url: item.css('a.repository-name').attribute('href').value,
-      description: item.css('p.repo-leaderboard-description').text,
+      owner: owner,
+      name: name,
+      language: language,
+      url: path,
+      description: item.css('p.repo-list-description').text.strip,
     }
   end
 end
