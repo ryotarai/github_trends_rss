@@ -65,7 +65,7 @@ def rss(lang_name, lang_key, since)
     repos.each_with_index do |repo, index|
       item = maker.items.new_item
       item.link = "https://github.com#{repo[:url]}"
-      item.title = "#{repo[:owner]}/#{repo[:name]} (##{index + 1} - #{lang_name} - #{caped_since})"
+      item.title = "#{repo[:owner]}/#{repo[:name]}"
       item.description = "#{repo[:description]}\n(#{repo[:language]})"
       item.date = Time.now
     end
