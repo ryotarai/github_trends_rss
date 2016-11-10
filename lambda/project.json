@@ -1,0 +1,8 @@
+{
+  "name": "github_trends_rss",
+  "description": "GitHub Trends RSS",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::736804012041:role/github_trends_rss_lambda_function",
+  "environment": {}
+}

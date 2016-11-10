@@ -1,0 +1,5 @@
+lxml
+cssselect
+requests
+feedgen
+boto3
