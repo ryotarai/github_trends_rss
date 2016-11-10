@@ -36,17 +36,17 @@ def fetch_repos(lang_key, since)
       raise
     end
   end
-  doc.css('.repo-list-item').map do |item|
-    path = item.css('.repo-list-name a').attr('href').value
+  doc.css('.repo-list li').map do |item|
+    path = item.css('h3 a').attr('href').value
     _, owner, name = path.split('/')
-    language = item.css('p.repo-list-meta').text.split("\n")[1].strip
+    language = item.css('div.f6.text-gray.mt-2 > span.mr-3').text.strip
 
     {
       owner: owner,
       name: name,
       language: language,
       url: path,
-      description: item.css('p.repo-list-description').text.strip,
+      description: item.css('div.py-1 > p').text.strip,
     }
   end
 end
@@ -82,6 +82,3 @@ end
     puts "done."
   end
 end
-
-
-
