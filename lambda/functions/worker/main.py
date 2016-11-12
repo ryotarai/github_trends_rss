@@ -4,6 +4,7 @@ import requests
 from feedgen.feed import FeedGenerator
 import boto3
 import json
+from datetime import datetime
 
 sqs = boto3.resource('sqs')
 s3 = boto3.resource('s3')
@@ -46,12 +47,15 @@ def generate_rss(language, since):
     s3.Object(bucket, 'rss/{0}'.format(file_name)).put(Body=rssfeed, ContentType="application/xml")
 
 def handle(event, context):
+    started_at = datetime.now()
     queue = sqs.get_queue_by_name(QueueName=queue_name)
     while True:
         messages = queue.receive_messages(VisibilityTimeout=300, MaxNumberOfMessages=10)
         if len(messages) == 0:
             return
         for message in messages:
+            if (datetime.now() - started_at).total_seconds() > 60 * 4 + 50:
+                return
             print(message.body)
             data = json.loads(message.body)
             generate_rss(data["language"], data["since"])
